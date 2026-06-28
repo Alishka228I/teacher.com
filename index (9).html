@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо, Учитель — Подарок</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- === INTRO SCREEN === -->
+    <section id="introSection" class="section intro-section">
+        <div class="intro-content">
+            <h1 class="intro-title">Спасибо, Учитель.</h1>
+            <p class="intro-subtitle">Небольшой подарок,<br>подготовленный специально для Вас.</p>
+            <button class="btn btn-gold" id="startBtn">Начать</button>
+        </div>
+        <!-- Animated gold particles background -->
+        <div class="particles-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </section>
+
+    <!-- === FORM SECTION === -->
+    <section id="formSection" class="section form-section hidden">
+        <div class="form-container glass-card">
+            <h2 class="form-title">Немного о Вас</h2>
+            
+            <form id="userForm" class="form-content">
+                <div class="form-group">
+                    <label for="fullName">Имя и фамилия</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Возраст</label>
+                    <input type="number" id="age" name="age" min="18" max="120" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="animal">Любимое животное</label>
+                    <input type="text" id="animal" name="animal" placeholder="Например, кот" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cake">Любимый торт</label>
+                    <input type="text" id="cake" name="cake" placeholder="Например, тирамису" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="chocolate">Любимая шоколадка</label>
+                    <input type="text" id="chocolate" name="chocolate" placeholder="Например, Линдор" required>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent" class="checkbox-label">
+                        Я согласен(а) с использованием моих ответов для этого подарочного проекта
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-gold">Продолжить</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- === TRANSITION SECTION === -->
+    <section id="transitionSection" class="section transition-section hidden">
+        <div class="light-ray"></div>
+        <div class="transition-text">
+            <p class="transition-line">Некоторые люди меняют не только код…</p>
+            <p class="transition-line">Они меняют людей.</p>
+        </div>
+    </section>
+
+    <!-- === CARDS SECTION === -->
+    <section id="cardsSection" class="section cards-section hidden">
+        <div class="cards-container">
+            <!-- Card 1: Профессионал -->
+            <div class="card glass-card card-visible">
+                <div class="card-emoji">🏆</div>
+                <div class="card-title">Настоящий профессионал</div>
+            </div>
+
+            <!-- Card 2: Объяснение -->
+            <div class="card glass-card">
+                <div class="card-emoji">🧠</div>
+                <div class="card-content">Учитель, который умеет объяснить даже самые сложные темы.</div>
+            </div>
+
+            <!-- Card 3: Движение вперед -->
+            <div class="card glass-card">
+                <div class="card-emoji">🚀</div>
+                <div class="card-content">Благодаря Вам хочется двигаться только вперед.</div>
+            </div>
+
+            <!-- Card 4: Знания -->
+            <div class="card glass-card">
+                <div class="card-emoji">💎</div>
+                <div class="card-content">Ваши знания действительно бесценны.</div>
+            </div>
+
+            <!-- Card 5: Спасибо за знания -->
+            <div class="card glass-card">
+                <div class="card-emoji">⭐</div>
+                <div class="card-content">Спасибо за знания!</div>
+            </div>
+
+            <!-- Card 6: Спасибо за терпение -->
+            <div class="card glass-card">
+                <div class="card-emoji">❤️</div>
+                <div class="card-content">Спасибо за терпение и поддержку.</div>
+            </div>
+
+            <!-- Card 7: Лучший учитель -->
+            <div class="card glass-card">
+                <div class="card-emoji">❓</div>
+                <div class="card-content">Лучший учитель?</div>
+            </div>
+
+            <!-- Card 8: Photo Card -->
+            <div class="card glass-card photo-card">
+                <div class="photo-frame">
+                    <img id="teacherPhoto" src="images/teacher.jpg" alt="Учитель" class="teacher-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue Button (shown after photo) -->
+        <button class="btn btn-gold camera-btn hidden" id="continueFromCard">Продолжить</button>
+    </section>
+
+    <!-- === FINAL SECTION === -->
+    <section id="finalSection" class="section final-section hidden">
+        <div class="final-bg">
+            <img id="thanksImage" src="images/thanks.jpg" alt="Спасибо" class="thanks-image">
+        </div>
+
+        <div class="final-content glass-card">
+            <div class="final-text">
+                <p class="text-line">Спасибо за всё, чему Вы нас научили.</p>
+                <p class="text-line">Ваши занятия стали для нас не просто уроками программирования, а возможностью развиваться, учиться мыслить и не бояться сложных задач.</p>
+                <p class="text-line">Спасибо за терпение, поддержку, чувство юмора и желание делиться знаниями. Мы искренне ценим Ваш труд и вклад в каждого из нас.</p>
+                <p class="text-line">Желаем Вам крепкого здоровья, новых достижений, талантливых учеников и успехов во всех начинаниях.</p>
+                <p class="text-line signature">С уважением и благодарностью,<br>группа #2243 ❤️</p>
+            </div>
+        </div>
+
+        <!-- Final particles and effects -->
+        <div class="final-particles">
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+            <div class="particle-final"></div>
+        </div>
+    </section>
+
+    <!-- === SPECIAL SECTION (for Азамат) === -->
+    <section id="specialSection" class="section special-section hidden">
+        <div class="special-content">
+            <div class="special-card glass-card">
+                <div class="special-title">✨ Азамат ✨</div>
+                <div class="special-message">
+                    <p>Спасибо за то, что ты наш лучший!<br>🎓🚀💻❤️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === THANK YOU SECTION === -->
+    <section id="thankYouSection" class="section thank-you-section hidden">
+        <div class="thank-you-content glass-card">
+            <h2 class="thank-you-title">Спасибо за прохождение!</h2>
+            <p class="thank-you-text">Надеемся, Вам понравился наш подарок.</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
