@@ -613,7 +613,7 @@ textarea:focus {
 .text-line {
     font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     line-height: 1.8;
-    color: var(--color-light-gray);
+    color: white;
     opacity: 0;
     animation: textLineAppear 0.8s ease-out forwards;
 }
