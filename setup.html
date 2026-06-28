@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup — Teacher Gift Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 165, 116, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 0 40px rgba(212, 165, 116, 0.1);
+        }
+        
+        h1 {
+            color: #d4a574;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .step {
+            border-left: 3px solid #d4a574;
+            padding-left: 1.5rem;
+        }
+        
+        .step-number {
+            color: #d4a574;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-content {
+            color: #aaa;
+            line-height: 1.6;
+        }
+        
+        .code {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #d4a574;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            color: #d4a574;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #d4a574, #e8c4a0);
+            color: #0a0a0a;
+            border: 2px solid #d4a574;
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(212, 165, 116, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #d4a574;
+            border: 2px solid #d4a574;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 165, 116, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .warning {
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid #d4a574;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            color: #d4a574;
+            font-size: 0.95rem;
+        }
+        
+        .checklist {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            color: #aaa;
+        }
+        
+        .checklist-item input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #d4a574;
+        }
+        
+        .success {
+            background: rgba(82, 183, 136, 0.1);
+            border: 1px solid #52b788;
+            color: #52b788;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Teacher Gift Setup</h1>
+        <p class="subtitle">Get your premium website ready in 3 easy steps</p>
+        
+        <div class="steps">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">Create Image Folder</div>
+                <div class="step-content">
+                    Create a folder named <code>images</code> in the same directory as your HTML file.
+                    <div class="code">
+                        TeacherGift/<br>
+                        ├── index.html<br>
+                        ├── style.css<br>
+                        ├── script.js<br>
+                        └── <strong>images/</strong> ← Create this folder
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Add Your Images</div>
+                <div class="step-content">
+                    Save these two files in the <code>images</code> folder:
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="img1">
+                            <label for="img1"><strong>teacher.jpg</strong> — Portrait of the teacher (400x500px recommended)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="img2">
+                            <label for="img2"><strong>thanks.jpg</strong> — Thank you background image (1920x1080px recommended)</label>
+                        </div>
+                    </div>
+                    <div class="warning">
+                        💡 Tip: Use high-quality images for a premium look. PNG or JPG both work fine.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Open the Website</div>
+                <div class="step-content">
+                    Choose your preferred method:
+                    
+                    <div style="margin-top: 1rem;">
+                        <strong>Option A: Direct (Easiest)</strong>
+                        <div class="code">Double-click index.html</div>
+                    </div>
+                    
+                    <div style="margin-top: 1rem;">
+                        <strong>Option B: Python Server</strong>
+                        <div class="code">
+                            python -m http.server 8000<br>
+                            Then open: http://localhost:8000
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1rem;">
+                        <strong>Option C: VS Code Live Server</strong>
+                        <div class="code">
+                            Right-click index.html<br>
+                            → Open with Live Server
+                        </div>
+                    </div>
+                    
+                    <div class="success" style="margin-top: 1rem;">
+                        ✓ You're ready to go!
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Customization -->
+        <div class="step" style="margin-top: 3rem;">
+            <div class="step-number">?</div>
+            <div class="step-title">Want to Customize?</div>
+            <div class="step-content">
+                Read the documentation files for:
+                <div class="checklist" style="margin-top: 1rem;">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="doc1">
+                        <label for="doc1"><strong>CONFIG.md</strong> — Change colors, text, timing</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="doc2">
+                        <label for="doc2"><strong>QUICK_START.md</strong> — Fast customization guide</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="doc3">
+                        <label for="doc3"><strong>README.md</strong> — Complete feature list</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                ← Back to Site
+            </button>
+            <button class="btn btn-primary" onclick="downloadGuide()">
+                📥 Download Setup Guide
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function downloadGuide() {
+            const text = `TEACHER GIFT WEBSITE - SETUP CHECKLIST
+
+✓ STEP 1: Create images/ folder in same directory as index.html
+
+✓ STEP 2: Add two image files:
+  - teacher.jpg (portrait photo, 400x500px recommended)
+  - thanks.jpg (background image, 1920x1080px recommended)
+
+✓ STEP 3: Open index.html in your browser
+  - Double-click it, OR
+  - Use: python -m http.server 8000, OR
+  - Use VS Code Live Server
+
+✓ OPTIONAL: Customize via CONFIG.md
+  - Change colors
+  - Change text content
+  - Change special name from "Азамат" to any name
+  - Adjust animation timing
+  - Add more cards
+
+✓ READY TO SHARE:
+  - Deploy to GitHub Pages
+  - Upload to Netlify
+  - Send as folder
+  - Convert to standalone file
+
+Good luck! 🎓`;
+            
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'SETUP_CHECKLIST.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
