@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо, Учитель — Демо</title>
+    <style>
+        /* === ROOT VARIABLES === */
+        :root {
+            --color-black: #0a0a0a;
+            --color-dark-gray: #1a1a1a;
+            --color-medium-gray: #2a2a2a;
+            --color-light-gray: #3a3a3a;
+            --color-gold: #d4a574;
+            --color-gold-light: #e8c4a0;
+            --color-white: #ffffff;
+            --shadow-soft: 0 8px 32px rgba(212, 165, 116, 0.1);
+            --shadow-glow: 0 0 40px rgba(212, 165, 116, 0.3);
+            --transition-smooth: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-black);
+            color: var(--color-white);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* === INTRO === */
+        .intro-section {
+            background: linear-gradient(180deg, var(--color-black) 0%, var(--color-dark-gray) 100%);
+        }
+
+        .intro-content {
+            text-align: center;
+            z-index: 10;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .intro-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .intro-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-light-gray);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+            color: var(--color-black);
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.4);
+            border: 2px solid var(--color-gold);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(212, 165, 116, 0.6);
+        }
+
+        /* === FORM === */
+        .form-section {
+            background: linear-gradient(180deg, var(--color-dark-gray) 0%, var(--color-black) 100%);
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 500px;
+            padding: var(--spacing-lg);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            color: var(--color-gold);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-light-gray);
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            border-radius: 8px;
+            color: var(--color-white);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: var(--color-gold);
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin: 2rem 0;
+        }
+
+        .checkbox-group input {
+            width: 24px;
+            height: 24px;
+            accent-color: var(--color-gold);
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: var(--color-light-gray);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        /* === CARDS === */
+        .cards-section {
+            background: linear-gradient(180deg, var(--color-dark-gray) 0%, var(--color-black) 100%);
+        }
+
+        .cards-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            position: absolute;
+            width: 90%;
+            max-width: 400px;
+            min-height: 300px;
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        .card.card-visible {
+            opacity: 1;
+            transform: scale(1);
+            animation: cardRevealLight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes cardRevealLight {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+                filter: brightness(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: brightness(1);
+            }
+        }
+
+        .card-emoji {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-content {
+            font-size: 1.2rem;
+            color: var(--color-light-gray);
+            line-height: 1.8;
+        }
+
+        /* === FINAL === */
+        .final-section {
+            background: var(--color-black);
+        }
+
+        .final-content {
+            width: 90%;
+            max-width: 600px;
+            padding: var(--spacing-lg);
+        }
+
+        .final-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .text-line {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-light-gray);
+            opacity: 0;
+            animation: textLineAppear 0.8s ease-out forwards;
+        }
+
+        .text-line:nth-child(1) { animation-delay: 0.2s; }
+        .text-line:nth-child(2) { animation-delay: 0.6s; }
+        .text-line:nth-child(3) { animation-delay: 1s; }
+        .text-line:nth-child(4) { animation-delay: 1.4s; }
+
+        @keyframes textLineAppear {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .signature {
+            font-weight: 700;
+            color: var(--color-gold);
+            margin-top: var(--spacing-md);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .demo-note {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid var(--color-gold);
+            color: var(--color-gold);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            z-index: 100;
+            max-width: 300px;
+        }
+
+        @media (max-width: 600px) {
+            .intro-title {
+                font-size: 2.5rem;
+            }
+            .intro-subtitle {
+                font-size: 1rem;
+            }
+            .card {
+                max-width: 90%;
+            }
+            .demo-note {
+                font-size: 0.8rem;
+                padding: 0.7rem;
+                right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-note">
+        📌 <strong>Demo Mode</strong> — No images needed. Uses placeholder gradients.
+    </div>
+
+    <!-- INTRO -->
+    <section id="introSection" class="section intro-section">
+        <div class="intro-content">
+            <h1 class="intro-title">Спасибо, Учитель.</h1>
+            <p class="intro-subtitle">Небольшой подарок,<br>подготовленный специально для Вас.</p>
+            <button class="btn btn-gold" onclick="startDemo()">Начать Демо</button>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section id="formSection" class="section form-section hidden">
+        <div class="form-container glass-card">
+            <h2 class="form-title">Немного о Вас</h2>
+            <form id="demoForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Имя и фамилия</label>
+                    <input type="text" id="name" required placeholder="Введите имя">
+                </div>
+                <div class="form-group">
+                    <label for="age">Возраст</label>
+                    <input type="number" id="age" required placeholder="Введите возраст">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent" class="checkbox-label">Согласен с использованием данных</label>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1rem;">
+                    Продолжить
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CARDS -->
+    <section id="cardsSection" class="section cards-section hidden">
+        <div class="cards-container">
+            <div class="card glass-card">
+                <div class="card-emoji">🏆</div>
+                <div class="card-title">Настоящий профессионал</div>
+            </div>
+            <div class="card glass-card">
+                <div class="card-emoji">🧠</div>
+                <div class="card-content">Учитель, который умеет объяснить даже самые сложные темы.</div>
+            </div>
+            <div class="card glass-card">
+                <div class="card-emoji">🚀</div>
+                <div class="card-content">Благодаря Вам хочется двигаться только вперед.</div>
+            </div>
+            <div class="card glass-card">
+                <div class="card-emoji">💎</div>
+                <div class="card-content">Ваши знания действительно бесценны.</div>
+            </div>
+            <div class="card glass-card">
+                <div class="card-emoji">⭐</div>
+                <div class="card-content">Спасибо за знания!</div>
+            </div>
+            <div class="card glass-card">
+                <div class="card-emoji">❤️</div>
+                <div class="card-content">Спасибо за терпение и поддержку.</div>
+            </div>
+        </div>
+        <button class="btn btn-gold" onclick="showFinal()" style="position: absolute; bottom: 2rem; display: none;" id="finalBtn">
+            Продолжить
+        </button>
+    </section>
+
+    <!-- FINAL -->
+    <section id="finalSection" class="section final-section hidden">
+        <div class="final-content glass-card">
+            <div class="final-text">
+                <p class="text-line">Спасибо за всё, чему Вы нас научили.</p>
+                <p class="text-line">Ваши занятия стали для нас возможностью развиваться, учиться мыслить и не бояться сложных задач.</p>
+                <p class="text-line">Спасибо за терпение, поддержку и желание делиться знаниями.</p>
+                <p class="text-line signature">С благодарностью и уважением! 🎓</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentCard = 0;
+
+        function hideAllSections() {
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+        }
+
+        function showSection(id) {
+            hideAllSections();
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function startDemo() {
+            showSection('formSection');
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showSection('cardsSection');
+            playCards();
+        }
+
+        function playCards() {
+            const cards = document.querySelectorAll('#cardsSection .card');
+            currentCard = 0;
+            
+            function showNextCard() {
+                cards.forEach(c => c.classList.remove('card-visible'));
+                if (currentCard < cards.length) {
+                    cards[currentCard].classList.add('card-visible');
+                    currentCard++;
+                    setTimeout(showNextCard, 2800);
+                } else {
+                    document.getElementById('finalBtn').style.display = 'block';
+                }
+            }
+            
+            showNextCard();
+        }
+
+        function showFinal() {
+            showSection('finalSection');
+        }
+    </script>
+</body>
+</html>
